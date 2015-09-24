@@ -13,5 +13,9 @@ class ImagesController < ApplicationController
     redirect_to action: :index
   end
 
+  def show
+    @image = Image.find(params[:id])
+  end
+
 end
 
