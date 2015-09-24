@@ -35,5 +35,17 @@ RSpec.describe ImagesController, type: :controller do
     end
   end
 
+  describe "destroy" do
+    let!(:image) { Image.create(url: "http://example.com/", title: "test") }
+
+    it "destroy image" do
+      expect {
+        delete :destroy, id: image.id
+      }.to change {
+        Image.count
+      }.from(1).to(0)
+    end
+  end
+
 end
 
