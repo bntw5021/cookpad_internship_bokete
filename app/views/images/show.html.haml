@@ -2,3 +2,13 @@
 = image_tag @image.url
 = link_to "削除", @image, method: :delete
 
+%h2 コメント
+%ul
+  - @image.comments.each do | comment |
+    %li
+      = comment.body
+
+= form_for [@image, Comment.new] do |f|
+  = f.text_field :body
+  = f.submit
+
